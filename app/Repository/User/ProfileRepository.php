@@ -16,7 +16,7 @@ class ProfileRepository implements ProfileInterface
     {
         $user = auth()->user();
         $user->profile()->updateOrCreate(['user_id' => Auth::id()], $request->validated());
-        $user->update(['email' => $request->email, 'userName' => ($request->firstName ?? $user->firstName).($request->lastName ?? $user->lastName)]);
+        $user->update(['userName' => ($request->firstName ?? $user->firstName).($request->lastName ?? $user->lastName)]);
 
         return UserResource::make($user);
     }

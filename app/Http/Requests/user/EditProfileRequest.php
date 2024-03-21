@@ -33,6 +33,7 @@ class EditProfileRequest extends FormRequest
             'bgColor' => 'nullable|string|max:255',
             'primaryLinks.*.id' => 'sometimes|exists:primary_links,id',
             'primaryLinks.*.value' => 'sometimes|string|max:255',
+            'email' => 'sometimes|email',
 
         ];
     }

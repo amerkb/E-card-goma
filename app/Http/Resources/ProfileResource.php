@@ -19,6 +19,7 @@ class ProfileResource extends JsonResource
             'lastName' => $this->lastName,
             'location' => $this->location,
             'about' => $this->about,
+            'email' => $this->email,
             'theme' => ThemeResource::make($this->theme),
             'cover' => url($this->cover ?? null),
             'photo' => url($this->photo ?? null),
@@ -27,9 +28,9 @@ class ProfileResource extends JsonResource
             'created_at' => $this->created_at->format('Y-m-d'),
             'updated_at' => $this->updated_at->format('Y-m-d'),
             'links' => ProfilePrimaryLinkResource::collection($this->user->primary),
-            //            'views' => $this->views()->count(),
-            //            'views_by_address' => $this->countViewByAddress($this->user_id),
-            //            'views_details' => ViewResource::collection($this->views()->get()),
+//                        'views' => $this->views()->count(),
+//                        'views_by_address' => $this->countViewByAddress($this->user_id),
+//                        'views_details' => ViewResource::collection($this->views()->get()),
         ];
     }
 }
