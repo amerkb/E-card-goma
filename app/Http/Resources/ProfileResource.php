@@ -19,7 +19,7 @@ class ProfileResource extends JsonResource
             'lastName' => $this->lastName,
             'location' => $this->location,
             'about' => $this->about,
-            'theme' => url($this->theme->image ?? null),
+            'theme' => ThemeResource::make($this->theme),
             'cover' => url($this->cover ?? null),
             'photo' => url($this->photo ?? null),
             'bgColor' => $this->bgColor,

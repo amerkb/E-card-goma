@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\EditUserRequest;
 use App\Http\Requests\Dashboard\UserRequest;
 use App\Interfaces\Dashboard\UserInterface;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -35,9 +36,27 @@ class UserController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     */
+    public function store_user_by_number(Request $request)
+    {
+        return $this->user->store_user_by_number($request);
+
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(User $user)
+    {
+        return $this->user->show($user);
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show_by_uuid(User $user)
     {
         return $this->user->show($user);
 

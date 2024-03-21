@@ -27,7 +27,7 @@ class step1ProfileRequest extends FormRequest
             'location' => 'sometimes|string|max:255',
             'phoneNum' => 'sometimes|string|max:255',
             'about' => 'sometimes|string|max:255',
-            'email' => 'sometimes|email',
+            'email' => 'sometimes|email|unique:users,email',
         ];
     }
 }

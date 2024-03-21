@@ -2,7 +2,6 @@
 
 namespace App\Repository\User;
 
-use App\Http\Resources\PrimaryLinkStatisticsResource;
 use App\Interfaces\User\StatisticInterface;
 use App\Models\View;
 use App\Models\ViewLink;

@@ -56,16 +56,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $host = asset('');
 
-        $linkView= $this->links_views()
+        $linkView = $this->links_views()
             ->select('user_primary_links_views.primary_link_id', 'primary_links.name', DB::raw("CONCAT('$host', primary_links.logo) AS logo"), DB::raw('COUNT(primary_link_id) AS visit'))
             ->join('primary_links', 'primary_links.id', '=', 'user_primary_links_views.primary_link_id')
             ->whereBetween('user_primary_links_views.created_at', [$start, $end.' 23:59:59'])
             ->groupBy('user_primary_links_views.primary_link_id', 'primary_links.name', 'primary_links.logo')
             ->get();
 
-        $linkIds= $linkView->pluck('primary_link_id');
+        $linkIds = $linkView->pluck('primary_link_id');
 
-        $linkNotViewBetween= $this->links_views()
+        $linkNotViewBetween = $this->links_views()
             ->select('user_primary_links_views.primary_link_id', 'primary_links.name', DB::raw("CONCAT('$host', primary_links.logo) AS logo"), DB::raw('0 AS visit'))
             ->join('primary_links', 'primary_links.id', '=', 'user_primary_links_views.primary_link_id')
             ->whereNotIn('user_primary_links_views.primary_link_id', $linkIds)
@@ -87,10 +87,8 @@ class User extends Authenticatable implements MustVerifyEmail
                     ->whereRaw('ul.user_id = uvv.user_id');
             })
             ->where('ul.user_id', Auth::id())->get();
-      return  $mergedResults = $linkView->concat($linkNotViewBetween)->concat($linkDontView);
 
-
+        return $mergedResults = $linkView->concat($linkNotViewBetween)->concat($linkDontView);
 
     }
 }
-

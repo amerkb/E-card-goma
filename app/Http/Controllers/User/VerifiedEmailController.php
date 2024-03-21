@@ -88,16 +88,17 @@ class VerifiedEmailController extends Controller
 
         return response()->json(['message' => 'Password changed successfully']);
     }
+
     public function EditPassword(EditPasswordRequest $request)
     {
 
-$user = Auth::user();
-        if (md5($request->current_password)!= $user->password) {
+        $user = Auth::user();
+        if (md5($request->current_password) != $user->password) {
             return response()->json(['message' => 'Current password iis incorrect.'], 401);
         }
 
         $user->update([
-            'password' =>md5($request->new_password),
+            'password' => md5($request->new_password),
         ]);
 
         return response()->json(['message' => 'Password updated successfully.']);

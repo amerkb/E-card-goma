@@ -19,7 +19,6 @@ Route::post('logout', [AuthController::class, 'logout']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::middleware('isAdmin')->group(function () {
-        Route::post('creates_profiles', [ProfileController::class, 'creates_profiles']);
         Route::get('get_profiles', [ProfileController::class, 'get_profiles']);
     });
 
